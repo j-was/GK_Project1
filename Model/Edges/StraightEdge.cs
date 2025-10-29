@@ -53,7 +53,7 @@ namespace PolygonEditor.Model.Edges
             {
                 Constraint.CorrectEdgeCCW();
             }
-                return true;
+            return Ends[id].Continuity.IsSatisfied();
         }
 
         public bool CorrectCW()
@@ -95,11 +95,11 @@ namespace PolygonEditor.Model.Edges
             }
             else
             {
-                dY = 0;
+                dY = oY - cY;
+                oX = cX;
             }
-
+            
             ((IVertex)Ends[1 - id]).Move(oX, cY + dY);
-
             return true;
         }
 

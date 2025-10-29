@@ -83,7 +83,8 @@ namespace PolygonEditor.Model.Edges.Bezier
             }
             else
             {
-                dY = 0;
+                dY = cY - vY;
+                cX = vX;
             }
 
             ((IVertex)ControlPoints[id]).Move(cX, vY + dY);
