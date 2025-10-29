@@ -164,7 +164,7 @@ namespace PolygonEditor.Model.Edges.Arcs
             SetMid();
             Center.X = Mid.X;
             Center.Y = Mid.Y;
-            Constraint = new NoConstraint();
+            Constraint = new ArcConstraint();
         }
     }
 }

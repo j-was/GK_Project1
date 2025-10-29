@@ -38,6 +38,7 @@ Vertices (red):
 
 Edge Controls (purple square):
 - Each edge cotnrol is displayed by the middle of a straight line between ends
+- Control displays a symbol specific to a set constraint or edge type
 - Click an edge control to access options
     -> Change edge type
     -> Set constraints

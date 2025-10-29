@@ -740,7 +740,6 @@ namespace gk_project_1
                     }
                 }
             }
-            canvas.Invalidate();
             PositionAllControls();
         }
 

@@ -47,7 +47,7 @@ namespace PolygonEditor.Model.Edges.Bezier
             v1.Edges[1] = this;
             ControlPoints[0] = new BezierControlVertex(this, v0.X + v0.Continuity.GetTangentVector(0).dX, v0.Y + v0.Continuity.GetTangentVector(0).dY, 0);
             ControlPoints[1] = new BezierControlVertex(this, v1.X + v1.Continuity.GetTangentVector(1).dX, v1.Y + v1.Continuity.GetTangentVector(1).dY, 1);
-            Constraint = new NoConstraint();
+            Constraint = new BezierConstraint();
         }
         public bool SetConstraint(IConstraint constraint)
         {
