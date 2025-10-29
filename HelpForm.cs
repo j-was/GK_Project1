@@ -37,6 +37,7 @@ Vertices (red):
     -> Remove the vertex with the button
 
 Edge Controls (purple square):
+- Each edge cotnrol is displayed by the middle of a straight line between ends
 - Click an edge control to access options
     -> Change edge type
     -> Set constraints
@@ -57,8 +58,10 @@ Dragging Behavior:
 - The single available predefined scene will be loaded automatically, no further selection required
 
 5. Limitations:
-- User may set some combinations of constraints and continuities that will limit moves or cause funny changes in shape
-- For now having some issues when it comes to propagation (edge sometimes gets fixed only after clicking on the other-than-moved end or bezier controls get stuck)
+- Hierarchy (in some situations): current user move > constraints > continuity
+- Moving another control usually fixes any bugs (if any happen)
+- Application is tested, but in some strange cases bugs might happen
+- Lab requirements are met, but in cases of behaviour that was not required and not directly prohibited, user may be able to set things but they may not be fully implemented (ex. C1 with Arc)
 ";
             Controls.Add(tb);
         }

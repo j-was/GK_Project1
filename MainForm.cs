@@ -355,19 +355,19 @@ namespace gk_project_1
             y += 15;
 
             var rbNo = new RadioButton { Text = "No", Left = 12, Top = y, Checked = v.Continuity is NoContinuity };
-            rbNo.CheckedChanged += (s, e) => { if (rbNo.Checked) v.SetContinuity(new NoContinuity()); RedrawAll(); };
+            rbNo.CheckedChanged += (s, e) => { if (rbNo.Checked) v.SetContinuity(new NoContinuity()); UpdateInfoPanel(); RedrawAll(); };
             _infoPanel.Controls.Add(rbNo);
             y += 20;
             var rbG0 = new RadioButton { Text = "G0", Left = 12, Top = y, Checked = v.Continuity is G0Continuity };
-            rbG0.CheckedChanged += (s, e) => { if (rbG0.Checked) v.SetContinuity(new G0Continuity()); RedrawAll(); };
+            rbG0.CheckedChanged += (s, e) => { if (rbG0.Checked) v.SetContinuity(new G0Continuity()); UpdateInfoPanel(); RedrawAll(); };
             _infoPanel.Controls.Add(rbG0);
             y += 20;
             var rbG1 = new RadioButton { Text = "G1", Left = 12, Top = y, Checked = v.Continuity is G1Continuity };
-            rbG1.CheckedChanged += (s, e) => { if (rbG1.Checked) v.SetContinuity(new G1Continuity()); RedrawAll(); };
+            rbG1.CheckedChanged += (s, e) => { if (rbG1.Checked) v.SetContinuity(new G1Continuity()); UpdateInfoPanel(); RedrawAll(); };
             _infoPanel.Controls.Add(rbG1);
             y += 20;
             var rbC1 = new RadioButton { Text = "C1", Left = 12, Top = y, Checked = v.Continuity is C1Continuity };
-            rbC1.CheckedChanged += (s, e) => { if (rbC1.Checked) v.SetContinuity(new C1Continuity()); RedrawAll(); };
+            rbC1.CheckedChanged += (s, e) => { if (rbC1.Checked) v.SetContinuity(new C1Continuity()); UpdateInfoPanel(); RedrawAll(); };
             _infoPanel.Controls.Add(rbC1);
             y += 34;
 

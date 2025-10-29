@@ -16,11 +16,11 @@ namespace PolygonEditor.Model.Vertexes.Continuity
             {
                 return;
             }
-            _vertex.Edges[id].FitToTangentVector(id);
-            //if (!_vertex.Edges[id].FitToTangentVector(id))
-            //{
-            //    _vertex.Edges[1 - id].FitToTangentVector(1 - id);
-            //}
+            //_vertex.Edges[id].FitToTangentVector(id);
+            if (!_vertex.Edges[id].FitToTangentVector(id))
+            {
+                _vertex.Edges[1 - id].FitToTangentVector(1 - id);
+            }
         }
         public TangentVector GetTangentVector(int id)
         {

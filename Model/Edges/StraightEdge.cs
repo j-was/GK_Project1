@@ -59,14 +59,14 @@ namespace PolygonEditor.Model.Edges
         public bool CorrectCW()
         {
             Ends[0].Continuity.CorrectEdge(0);
-            Ends[1].Continuity.CorrectEdge(1);
+            //Ends[1].Continuity.CorrectEdge(1);
             Constraint.CorrectEdgeCW();
             return IsSatisfied();
         }
         public bool CorrectCCW()
         {
             Ends[1].Continuity.CorrectEdge(1);
-            Ends[0].Continuity.CorrectEdge(0);
+            //Ends[0].Continuity.CorrectEdge(0);
             Constraint.CorrectEdgeCCW();
             return IsSatisfied();
         }

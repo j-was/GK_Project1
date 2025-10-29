@@ -16,15 +16,13 @@ namespace PolygonEditor.Model.Vertexes.Continuity
             {
                 return;
             }
-            _vertex.Edges[id].FitToLine(id);
-            //if (!_vertex.Edges[id].FitToLine(id))
-            //{
-            //    _vertex.Edges[(id + 1) % 2].FitToLine((id + 1) % 2);
-            //}
+            //_vertex.Edges[id].FitToLine(id);
+            if (!_vertex.Edges[id].FitToLine(id))
+            {
+                _vertex.Edges[1-id].FitToLine(1-id);
+            }
 
         }
-
-
         public TangentVector GetTangentVector(int id)
         {
             return _vertex.Edges[(id + 1) % 2].GetTangentVector((id + 1) % 2).Reverse();

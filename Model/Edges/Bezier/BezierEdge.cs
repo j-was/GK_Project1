@@ -24,13 +24,13 @@ namespace PolygonEditor.Model.Edges.Bezier
         public bool CorrectCW()
         {
             Ends[0].Continuity.CorrectEdge(0);
-            Ends[1].Continuity.CorrectEdge(1);
+            //Ends[1].Continuity.CorrectEdge(1);
             return IsSatisfied();
         }
         public bool CorrectCCW()
         {
             Ends[1].Continuity.CorrectEdge(1);
-            Ends[0].Continuity.CorrectEdge(0);
+            //Ends[0].Continuity.CorrectEdge(0);
             return IsSatisfied();
         }
 
@@ -94,8 +94,8 @@ namespace PolygonEditor.Model.Edges.Bezier
         {
             Ends[0].Lock = true;
             Ends[1].Lock = true;
-            ControlPoints[0].Lock = true;
-            ControlPoints[1].Lock = true;
+            //ControlPoints[0].Lock = true;
+            //ControlPoints[1].Lock = true;
         }
 
         public void Unlock()

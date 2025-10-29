@@ -47,6 +47,14 @@ namespace PolygonEditor.Model.Edges.Arcs
 
             Center.X = Mx + rx;
             Center.Y = My + ry;
+
+            float rxA = x1 - Center.X; 
+            float ryA = y1 - Center.Y;
+
+            float cross = rxA * vy - ryA * vx;
+
+            Dir = cross > 0 ? 1 : -1;
+
             return true;
 
         }
