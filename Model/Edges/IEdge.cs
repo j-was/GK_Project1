@@ -31,8 +31,11 @@ namespace PolygonEditor.Model.Edges
         public void Reload();
         public bool CorrectPolygon()
         {
+            Constraint.CorrectEdgeMed();
             bool ret = false;
             Lock();
+            Ends[0].CorrectCCW();
+            Ends[1].CorrectCW();
             for (int i = 0; i < 50; i++)
             {
                 var cw = Ends[1].CorrectCW();

@@ -17,7 +17,7 @@ namespace PolygonEditor.Model.Vertexes.Continuity
 
         public TangentVector GetTangentVector(int id)
         {
-            return _vertex.Edges[(id + 1) % 2].GetTangentVector((id + 1) % 2).Reverse();
+            return _vertex.Edges[id-1].GetTangentVector(id-1).Reverse();
         }
 
         public bool IsSatisfied()

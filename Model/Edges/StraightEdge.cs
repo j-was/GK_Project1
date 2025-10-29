@@ -17,13 +17,13 @@ namespace PolygonEditor.Model.Edges
 
         public bool IsSatisfied()
         {
-            return Constraint.IsSatisfied()&&Ends[0].Continuity.IsSatisfied()&&Ends[1].Continuity.IsSatisfied();
+            return Constraint.IsSatisfied() && Ends[0].Continuity.IsSatisfied() && Ends[1].Continuity.IsSatisfied();
         }
         public IConstraint Constraint { get; private set; }
 
         public bool SetConstraint(IConstraint constraint)
         {
-            if (constraint is VerticalConstraint && (Ends[0].Edges[1].Constraint is VerticalConstraint|| Ends[1].Edges[0].Constraint is VerticalConstraint))
+            if (constraint is VerticalConstraint && (Ends[0].Edges[1].Constraint is VerticalConstraint || Ends[1].Edges[0].Constraint is VerticalConstraint))
             {
                 return false;
             }
@@ -38,27 +38,22 @@ namespace PolygonEditor.Model.Edges
 
         public TangentVector GetTangentVector(int id)
         {
-            int s = id == 0 ? 1 : -1;
-            return new TangentVector(s * (Ends[1].X - Ends[0].X), s * (Ends[1].Y - Ends[0].Y));
+            return new TangentVector((Ends[1 - id].X - Ends[id].X), (Ends[1 - id].Y - Ends[id].Y));
         }
 
         public bool FitToTangentVector(int id)
         {
             TangentVector vector = Ends[id].Continuity.GetTangentVector(id);
-            if (Constraint is DiagonalConstraint && Math.Abs(vector.Line)!=1)
-            {
-                return false;
-            }
-            if (Constraint is VerticalConstraint && vector.Line != float.MaxValue)
-            {
-                return false;
-            }
-            if (Constraint is LengthConstraint lc && vector.Length != lc.Length)
-            {
-                return false;
-            }
             ((IVertex)Ends[1 - id]).Move(Ends[id].X + vector.dX, Ends[id].Y + vector.dY);
-            return true;
+            if(id==0)
+            {
+                Constraint.CorrectEdgeCW();
+            }
+            else
+            {
+                Constraint.CorrectEdgeCCW();
+            }
+                return true;
         }
 
         public bool CorrectCW()
@@ -83,13 +78,13 @@ namespace PolygonEditor.Model.Edges
             {
                 return false;
             }
-            if (Constraint is VerticalConstraint && vector.Line != float.MaxValue)
+            if (Constraint is VerticalConstraint && vector.dX != 0)
             {
                 return false;
             }
             float cX = Ends[id].X;
             float cY = Ends[id].Y;
-            float oX = Ends[1-id].X;
+            float oX = Ends[1 - id].X;
             float oY = Ends[1 - id].Y;
             float sX;
             float dY;
@@ -103,15 +98,15 @@ namespace PolygonEditor.Model.Edges
                 dY = 0;
             }
 
-            ((IVertex)Ends[1 - id]).Move(oX , cY+dY);
+            ((IVertex)Ends[1 - id]).Move(oX, cY + dY);
 
             return true;
         }
 
         public void Lock()
         {
-            Ends[0].Lock=true;
-            Ends[1].Lock=true;
+            Ends[0].Lock = true;
+            Ends[1].Lock = true;
         }
 
         public void Unlock()
@@ -130,7 +125,7 @@ namespace PolygonEditor.Model.Edges
             return;
         }
 
-        public StraightEdge(Vertex Begin,Vertex End)
+        public StraightEdge(Vertex Begin, Vertex End)
         {
             Ends[0] = Begin;
             Ends[1] = End;

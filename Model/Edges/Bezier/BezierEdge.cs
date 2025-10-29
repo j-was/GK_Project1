@@ -94,16 +94,16 @@ namespace PolygonEditor.Model.Edges.Bezier
         {
             Ends[0].Lock = true;
             Ends[1].Lock = true;
-            Ends[0].Lock = true;
-            Ends[1].Lock = true;
+            ControlPoints[0].Lock = true;
+            ControlPoints[1].Lock = true;
         }
 
         public void Unlock()
         {
             Ends[0].Lock = false;
             Ends[1].Lock = false;
-            Ends[0].Lock = false;
-            Ends[1].Lock = false;
+            ControlPoints[0].Lock = false;
+            ControlPoints[1].Lock = false;
         }
 
         public void MoveEdge(float dx, float dy)

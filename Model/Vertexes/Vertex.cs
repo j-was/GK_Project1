@@ -40,31 +40,26 @@ namespace PolygonEditor.Model.Vertexes
 
         public bool CorrectPolygon()
         {
-            //bool ret = false;
             Lock = true;
             bool cw = false;
             bool ccw = false;
-            for (int i = 0; i < 25; i++)
+            CorrectCW();
+            CorrectCCW();
+            for (int i = 0; i < 50; i++)
             {
-                //var ccw = CorrectCCW();
-                //var cw = CorrectCW();
-                
+                if (CorrectCCW())
+                {
+                    ccw = true;
+                    break;
+                }
                 if (CorrectCW())
                 {
                     cw = true;
                     break;
                 }
-            }
-            for (int i = 0; i < 25; i++)
-            {
-                if (CorrectCCW())
-                {
-                    cw = true;
-                    break;
-                }
+                
             }
             Lock = false;
-            //return ret;
             return cw && ccw;
         }
 

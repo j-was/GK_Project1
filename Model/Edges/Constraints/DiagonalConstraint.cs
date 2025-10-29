@@ -37,8 +37,10 @@ namespace PolygonEditor.Model.Edges.Constraints
             float cY = _edge.Ends[0].Y;
             float oX = _edge.Ends[1].X;
             float oY = _edge.Ends[1].Y;
-            float dA = (oX - cX + oY - cY) / 2;
-            ((IVertex)_edge.Ends[1]).Move(cX + dA, cY + dA);
+            int sx = Math.Sign(oX - cX);
+            int sy = Math.Sign(oY - cY);
+            float dA = (Math.Abs(oX - cX) + Math.Abs(oY - cY)) / 2;
+            ((IVertex)_edge.Ends[1]).Move(cX + sx*dA, cY + sy*dA);
         }
 
         public void CorrectEdgeCCW()
@@ -51,8 +53,10 @@ namespace PolygonEditor.Model.Edges.Constraints
             float cY = _edge.Ends[1].Y;
             float oX = _edge.Ends[0].X;
             float oY = _edge.Ends[0].Y;
-            float dA = (oX - cX + oY - cY) / 2;
-            ((IVertex)_edge.Ends[0]).Move(cX + dA, cY + dA);
+            int sx = Math.Sign(oX - cX);
+            int sy = Math.Sign(oY - cY);
+            float dA = (Math.Abs(oX - cX) + Math.Abs(oY - cY)) / 2;
+            ((IVertex)_edge.Ends[0]).Move(cX + sx * dA, cY + sy * dA);
         }
 
         public void CorrectEdgeMed()
@@ -65,9 +69,11 @@ namespace PolygonEditor.Model.Edges.Constraints
             float cY = _edge.Ends[0].Y;
             float oX = _edge.Ends[1].X;
             float oY = _edge.Ends[1].Y;
-            float dA = (oX - cX + oY - cY) / 4;
-            ((IVertex)_edge.Ends[0]).Move(cX + dA, cY + dA);
-            ((IVertex)_edge.Ends[1]).Move(oX - dA, oY - dA);
+            int sx = Math.Sign(oX - cX);
+            int sy = Math.Sign(oY - cY);
+            float dA = (Math.Abs(oX - cX) + Math.Abs(oY - cY)) / 4;
+            ((IVertex)_edge.Ends[0]).Move(cX + sx*dA, cY + sy*dA);
+            ((IVertex)_edge.Ends[1]).Move(oX - sx*dA, oY - sy*dA);
         }
     }
 }
